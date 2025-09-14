@@ -1,0 +1,68 @@
+/* 
+Farbpalette Figma:
+https://www.figma.com/color-palettes/mermaid-garnet-symphony/
+*/
+
+.mulish {
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+body {
+    background: #E2B0A5;
+    padding: 20px;
+}
+
+h1 {
+    color: #1A3567;
+    font-size: 3rem;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E2B0A5;
+    font-size: 2rem;
+    font-weight: 400;
+    border-radius: 15px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 100px);
+    grid-gap: 8px;
+    grid-template-areas:
+        "s r"
+        "f p";
+}
+
+
+#shopping-list {
+    grid-area: s;
+    background-color: #95292D;
+}
+
+#recipes {
+    grid-area: r;
+    background-color: #6D3871;
+}
+
+#projects {
+    grid-area: p;
+    background-color: #C33F45;
+}
+
+#finance {
+    grid-area: f;
+    background-color: #176571;
+}
