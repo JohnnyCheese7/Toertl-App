@@ -1,0 +1,23 @@
+{
+  // Disable quick suggestions while typing
+  "editor.quickSuggestions": { "other": false, "comments": false, "strings": false },
+
+  // Disable inline suggestions (ghost text)
+  "editor.inlineSuggest.enabled": false,
+
+  // Disable accepting suggestions on Enter to avoid accidental accepts
+  "editor.acceptSuggestionOnEnter": "off",
+
+  // Disable parameter hints and suggestion preview
+  "editor.parameterHints.enabled": false,
+  "editor.suggest.preview": false,
+
+  // Disable word-based suggestions
+  "editor.wordBasedSuggestions": "off",
+
+  // Disable suggestion on trigger characters (prevents automatic popups)
+  "editor.suggestOnTriggerCharacters": false,
+
+  // Disable editor's suggestion widget from showing on delay
+  "editor.suggest.showWords": false
+}
