@@ -24,14 +24,6 @@ const itemList = document.getElementById("item-list")
 const addItemBtn = document.getElementById("add-item-btn")
 const deleteAllBtn = document.getElementById("delete-all-btn")
 
-function showItems(items) {
-    let list = ""
-    for (let i = 0; i < items.length; i++) {
-        list += `<li>${items[i]}</li>`
-    }
-    itemList.innerHTML = list
-}
-
 onValue(referenceInDB, function(snapshot) {
     if (snapshot.exists()) {
     const snapshotValues = snapshot.val()
@@ -41,6 +33,14 @@ onValue(referenceInDB, function(snapshot) {
         itemList.innerHTML = ""
     }
     })
+
+function showItems(items) {
+    let list = ""
+    for (let i = 0; i < items.length; i++) {
+        list += `<li>${items[i]}</li>`
+    }
+    itemList.innerHTML = list
+}
 
 addItemBtn.addEventListener("click", function() {
     const value = newItem.value.trim()
