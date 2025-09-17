@@ -51,5 +51,4 @@ addItemBtn.addEventListener("click", function() {
 
 deleteAllBtn.addEventListener("click", function() {
     remove(referenceInDB)
-    itemList.innerHTML = ""
     })
