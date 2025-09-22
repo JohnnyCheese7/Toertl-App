@@ -24,24 +24,29 @@ const itemList = document.getElementById("item-list")
 const addItemBtn = document.getElementById("add-item-btn")
 const deleteAllBtn = document.getElementById("delete-all-btn")
 
+// Liste aus Firebase DB holen
 onValue(referenceInDB, function(snapshot) {
     if (snapshot.exists()) {
     const snapshotValues = snapshot.val()
-    const items = Object.values(snapshotValues)
+    const items = Object.entries(snapshotValues) // Paare bilden aus den DB Einträgen [ [id, text], [id, text], ... ]
     showItems(items)
     } else {
         itemList.innerHTML = ""
     }
     })
 
+    // Liste anzeigen
 function showItems(items) {
     let list = ""
     for (let i = 0; i < items.length; i++) {
-        list += `<li>${items[i]}<button class="delete-item-btn">X</button></li>`
+        const id = items[i][0]
+        const itemText = items[i][1]
+        list += `<li>${itemText}<button class="delete-item-btn" data-id="${id}">X</button></li>`
     }
     itemList.innerHTML = list
 }
 
+// Button Hinzufügen
 addItemBtn.addEventListener("click", function() {
     const value = newItem.value.trim()
     if (!value) return
@@ -49,15 +54,19 @@ addItemBtn.addEventListener("click", function() {
     newItem.value = ""
     })
 
+// Button Liste löschen
 deleteAllBtn.addEventListener("click", function() {
     remove(referenceInDB)
     })
 
+// Buttons einzeln löschen
 itemList.addEventListener("click", function(event) {
-    if (event.target.closest(".delete-item-btn")) {
-        const li = event.target.closest("li")
-        if (li) {
-            li.remove()
-        }
-    }
+    const btn = event.target.closest("button.delete-item-btn") 
+    if (!btn) return
+    // id aus data-id holen
+    const id = btn.dataset.id
+    if (!id) return
+    // in der Firebase DB löschen
+    remove(ref(database, "shoppinglist/" + id))
 })
+
