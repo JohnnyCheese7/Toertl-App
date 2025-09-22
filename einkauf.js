@@ -37,7 +37,7 @@ onValue(referenceInDB, function(snapshot) {
 function showItems(items) {
     let list = ""
     for (let i = 0; i < items.length; i++) {
-        list += `<li>${items[i]}</li>`
+        list += `<li>${items[i]}<button class="delete-item-btn">X</button></li>`
     }
     itemList.innerHTML = list
 }
@@ -52,3 +52,12 @@ addItemBtn.addEventListener("click", function() {
 deleteAllBtn.addEventListener("click", function() {
     remove(referenceInDB)
     })
+
+itemList.addEventListener("click", function(event) {
+    if (event.target.closest(".delete-item-btn")) {
+        const li = event.target.closest("li")
+        if (li) {
+            li.remove()
+        }
+    }
+})
